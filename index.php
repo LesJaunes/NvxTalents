@@ -118,6 +118,33 @@ vos oeuvres ! Mettez-y vos plus belles créations, et laissez le public voter po
 </section>
 <!--SERVICE SECTION END-->
 
+<footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
+    <div class="container">
+<hr color="blue"> 
+      <div class="row" id="contact">
+	  <HR align=center size=8 width="100%">
+        <div class="col-md-3">
+          <address>
+		  <HR align=center size=8 width="100%">
+              <strong>Belletable</strong>
+              <br>
+              <i class="fa fa-map-pin fa-fw text-primary"></i> 20 Rue de la gare - PARIS - 75100
+              <br>
+              <i class="fa fa-phone fa-fw text-primary"></i> 01 75 02 77 14
+              <br>
+              <i class="fa fa-envelope-o fa-fw text-primary"></i> contact@belletable.fr
+              <br>
+            </address>
+        </div>
+      </div>
+      <div class="row subfooter">
+        <!--@todo: replace with company copyright details-->
+        <div class="col-md-7">
+          <p align="center">Copyright © T&A </p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 
