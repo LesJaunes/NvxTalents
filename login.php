@@ -26,26 +26,24 @@
 
 			   $rang = $resReqCompte[0]['rang'];
 			   $idCpt = $resReqCompte[0]['ID'];
-			   $nbCon = $resReqCompte[0]['nbCon'];
-			   $nbCon = $nbCon + 1;
 
 			   if($rang == 1)
 			   {
-			   		$ReqMajInfosConnection = "UPDATE membres SET lastSessionDebut = NOW(), nbCon = '$nbCon' WHERE ID = '$idCpt' ";
+			   		$ReqMajInfosConnection = "UPDATE membres SET lastSessionDebut = NOW() WHERE ID = '$idCpt' ";
 			   		$ReqMaj = $connect->prepare($ReqMajInfosConnection);
 		    		$ReqMaj->execute();
 
-			    	$_SESSION['admin'] = $pseudo."-".$pass;
-			    	header("location:menu.php");
+			    	$_SESSION['admin'] = $pseudo;
+			    	header("location:index.php");
 			   }
 			   elseif ($rang == 0) 
 			   {
-			   		$ReqMajInfosConnection = "UPDATE membres SET lastSessionDebut = NOW(), nbCon = '$nbCon' WHERE ID = '$idCpt' ";
+			   		$ReqMajInfosConnection = "UPDATE membres SET lastSessionDebut = NOW() WHERE ID = '$idCpt' ";
 			   		$ReqMaj = $connect->prepare($ReqMajInfosConnection);
 		    		$ReqMaj->execute();
 		    		
-			   		$_SESSION['user'] = $pseudo."-".$pass;
-			    	header("location:espaceclient.php");
+			   		$_SESSION['user'] = $pseudo;
+			    	header("location:index.php");
 			   }
 			}
 		}

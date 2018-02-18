@@ -2,11 +2,10 @@
 
 header('Content-type: text/html; charset=UTF-8');
 
-$message = null;
-
 $nom = filter_input(INPUT_POST, 'nom');
 $prenom = filter_input(INPUT_POST, 'prenom');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
+$mail = filter_input(INPUT_POST, 'mail');
 $pass = filter_input(INPUT_POST, 'pass');
 
 if (isset($pseudo,$pass)) 
@@ -14,10 +13,10 @@ if (isset($pseudo,$pass))
     $nom = trim($nom);
     $prenom = trim($prenom);
     $pseudo = trim($pseudo);
-    $pass = trim($pass);
-   
+    $mail = trim($mail);
+    $pass = trim($pass);   
 
-    if(isset($pseudo,$pass,$nom,$prenom)) 
+    if(isset($pseudo,$pass,$nom,$prenom,$mail)) 
     {
     include "connec.php";
         
@@ -29,7 +28,7 @@ if (isset($pseudo,$pass))
   
         if ($resultat == 0) 
         {
-            $insertion = "INSERT INTO membres(pseudo,pass,Nom,Prenom,date_enregistrement) VALUES('$pseudo', '$pass', '$nom','$prenom', NOW())";
+            $insertion = "INSERT INTO membres(pseudo,pass,Nom,Prenom,Mail,date_enregistrement) VALUES('$pseudo', '$pass', '$nom','$prenom','$mail', NOW())";
             $connect->exec($insertion);
         }
     }
@@ -80,13 +79,11 @@ if (isset($pseudo,$pass))
                                                     <input type="text" id="prenom" placeholder="Prénom" name="prenom" id="prenom" required> 
                                                     <input type="text" id="pseudo" placeholder="Nom d'utilisateur" name="pseudo" id="pseudo" required>                                                    
                                                 </label>
-                                                <!--<label class="mail">
+                                                <label class="mail">
                                                     <input type="email" name="mail" placeholder="Adresse e-mail" id="mail">
-                                                </label>-->                                           
+                                                </label>                                          
                                                 <label class="pass">
                                                     <input type="password" id="pass" placeholder="Mot de passe" name="pass" required>
-                                                </label>
-                                                <label class="pass">
                                                     <input type="password" id="confPass" placeholder="Confirmation mot de passe" name="confPass" required>
                                                 </label>
                                             </div>
