@@ -4,166 +4,102 @@ header('Content-type: text/html; charset=UTF-8');
 
 $message = null;
 
+$nom = filter_input(INPUT_POST, 'nom');
+$prenom = filter_input(INPUT_POST, 'prenom');
 $pseudo = filter_input(INPUT_POST, 'pseudo');
 $pass = filter_input(INPUT_POST, 'pass');
 
 if (isset($pseudo,$pass)) 
 {   
-
-    $pseudo = trim($pseudo) != '' ? $pseudo : null;
-    $pass = trim($pass) != '' ? $pass : null;
+    $nom = trim($nom);
+    $prenom = trim($prenom);
+    $pseudo = trim($pseudo);
+    $pass = trim($pass);
    
 
-    if(isset($pseudo,$pass)) 
+    if(isset($pseudo,$pass,$nom,$prenom)) 
     {
-    $hostname = "localhost";
-    $database = "membrestalents";
-    $username = "root";
-    $password = "";
-    
-    
-    $pdo_options[PDO::ATTR_EMULATE_PREPARES] = false;
-    
-    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-    
-    $pdo_options[PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
-    
-    try
-    {
-      $connect = new PDO('mysql:host='.$hostname.';dbname='.$database, $username, $password, $pdo_options);
-    }
-    catch (PDOException $e)
-    {
-      exit('problème de connexion à la base');
-    }
+    include "connec.php";
         
-    $requete = "SELECT count(*) FROM membres WHERE pseudo = ?";
+    $requete = "SELECT count(*) FROM membres WHERE pseudo='$pseudo'";    
     
-    try
-    {
-      $req_prep = $connect->prepare($requete);
-      $req_prep->execute(array(0=>$pseudo));
-      $resultat = $req_prep->fetchColumn();
-      
-      if ($resultat == 0) 
-      {
-        $insertion = "INSERT INTO membres(pseudo,pass,date_enregistrement) VALUES(:nom, :password, NOW())";
-        
-        $insert_prep = $connect->prepare($insertion);
-        
-        $inser_exec = $insert_prep->execute(array(':nom'=>$pseudo,':password'=>$pass));
-
-        if ($inser_exec === true) 
+    $req_prep = $connect->prepare($requete);
+    $req_prep->execute(array(0=>$pseudo));
+    $resultat = $req_prep->fetchColumn();
+  
+        if ($resultat == 0) 
         {
-          if (!session_id()) session_start();
-          $_SESSION['login'] = $pseudo;
-          
-          $message = 'Votre inscription est enregistrée.';
-          /*ou redirection vers une page en cas de succès ex : menu.php*/
-          /*header("Location: menu.php");
-            exit();  */
-        }   
-      }
-      else
-      {   
-        $message = 'Ce pseudo est déjà utilisé, changez-le.';
-      }
+            $insertion = "INSERT INTO membres(pseudo,pass,Nom,Prenom,date_enregistrement) VALUES('$pseudo', '$pass', '$nom','$prenom', NOW())";
+            $connect->exec($insertion);
+        }
     }
-    catch (PDOException $e)
-    {
-      $message = 'Problème dans la requête d\'insertion';
-    }	
-  }
-  else 
-  {   
-    $message = 'Les champs Pseudo et Mot de passe doivent être remplis.';
-  }
 }
 ?>
-<!doctype html>
-<html lang="fr">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Formulaire d'inscription</title>
+<html>
+  <head>
+    <title>Belletable - Connexion</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/stylelogin.css">
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+  </head>
+    <body>
+        <div class="login-area">
+            <div class="bg-image">
+                <div class="login-signup">
+                    <div class="container">
+                        <div class="login-header">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="login-logo">
+                                        <img src="" alt="" class="img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="login-details">
+                                        <ul class="nav nav-tabs navbar-right">
+                                            <li><a data-toggle="tab" href="login.php">Déjà inscrit ?</a></li>
+                                            <li><a data-toggle="tab" href="index.php">Retour</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content">
+                            <div id="register" class="tab-pane fade in active">
+                               <div class="login-inner">
+                                    <div class="title">
+                                        <h1>Inscrivez <span>vous</span></h1>
+                                    </div>
+                                    <div class="login-form">
+                                        <form form action="#" method="post">
+                                            <div class="form-details">
+                                                <label class="user">
+                                                    <input type="text" id="nom" placeholder="Nom" name="nom" id="nom" required>
+                                                    <input type="text" id="prenom" placeholder="Prénom" name="prenom" id="prenom" required> 
+                                                    <input type="text" id="pseudo" placeholder="Nom d'utilisateur" name="pseudo" id="pseudo" required>                                                    
+                                                </label>
+                                                <!--<label class="mail">
+                                                    <input type="email" name="mail" placeholder="Adresse e-mail" id="mail">
+                                                </label>-->                                           
+                                                <label class="pass">
+                                                    <input type="password" id="pass" placeholder="Mot de passe" name="pass" required>
+                                                </label>
+                                                <label class="pass">
+                                                    <input type="password" id="confPass" placeholder="Confirmation mot de passe" name="confPass" required>
+                                                </label>
+                                            </div>
+                                            <button type="submit" id="valider" class="form-btn"> Inscription</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<style type="text/css">
-<!--
-body, p, h1,form, input, fieldset 
-{
-  margin:0;
-  padding:0;
-}
-
-body 
-{
-  background-color: #F4F4F4;
-}
-
-#inscription 
-{
-  width:400px;
-  background:#FFFFFF;
-  margin:20px auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size:1em;
-  border:1px solid #ccc;
-  border-radius:10px;
-}
-
-#inscription fieldset 
-{
-  text-align:center;
-  font-size:1.2em;
-  background:#333333;
-  padding-bottom:5px;
-  margin-bottom:15px;
-  color:#FFFFFF;
-  letter-spacing:0.05em;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
-}
-
-#inscription p 
-{
-  padding-top:15px;
-  padding-right:50px;
-  text-align:right;
-}
-
-#inscription input 
-{
-  margin-left:30px;
-  width:150px;
-}
-
-#inscription #valider 
-{
-  width:155px;
-  font-size:0.8em;
-}
-
-#inscription #message 
-{
-  height:27px;
-  color:#F00;
-  font-size:0.8em;
-  font-weight:bold;
-  text-align:center;
-  padding:10px 0 0 0;
-}
--->
-</style>
-</head>
-<body>
-<div id = "inscription">
-    <form action = "#" method = "post">
-    <fieldset>Inscription</fieldset>
-    <p><label for = "pseudo">Pseudo : </label><input type = "text" name = "pseudo" id = "pseudo" /></p>
-    <p><label for = "pass">Mot de passe : </label><input type = "password" name = "pass" id = "pass" /></p>
-    <p><input type = "submit" value = "Envoyer" id = "valider" /></p>
-    </form>
-    <p id = "message"><?= $message?:'' ?></p>
-	<p class="m-b-0 m-t">Retour à l'accueil <a href="index.php">BelleTable</a></p>
-</div>
-</body>
+    </body>
 </html>

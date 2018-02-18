@@ -1,7 +1,7 @@
 <?php 
 
 	$hostname = "localhost";
-    $database = "membrestalents";
+    $database = "ppebelletable";
     $username = "root";
     $password = "";
     
