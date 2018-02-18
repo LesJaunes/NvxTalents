@@ -42,18 +42,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="concours.php" class="dropdown-toggle" data-toggle="dropdown">Concours</a>
                     <ul class="dropdown-menu">
                                       <li class="dropdown-header">Catégories</li>
-                     <li><a href="#" tabindex="-1" class="menu-item">Vidéos</a></li>
-                     <li><a href="#" tabindex="-1" class="menu-item">Musiques</a></li>
-                     <li><a href="#" tabindex="-1" class="menu-item">Photos</a></li>
+                     <li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li>
+                     <li><a href="musiques.php" tabindex="-1" class="menu-item">Musiques</a></li>
+                     <li><a href="photos.php" tabindex="-1" class="menu-item">Photos</a></li>
                      <li class="dropdown-footer"></li></li>
                     </ul>
                     <li><a href="inscription.php">Inscription</a></li>
                     <li><a href="login.php">Connexion</a></li>
-                    <li><a href="#accueil">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
         </div>
