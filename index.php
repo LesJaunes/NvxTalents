@@ -105,7 +105,7 @@
         <h3>Comment participer ?</h3><hr/>
         <h2>Découverte des talents par BelleTable !</h2><br><br><br><br>
             <p><h4>Que vous soyez passionnés de photos, de vidéos, ou encore de musiques, le programme de Belle Table proposant la découverte de jeunes talents est fait pour vous ! Pour y participer, rien de plus simple ! Vous n'aurez qu'à commencer par vous incrire sur le site
-            <a href="espaceclient.php">ici</a> et vous aurez accès à la partie "concours" du site pour y poster vos oeuvres ! Mettez-y vos plus belles créations, et laissez le public voter pour vous !</h4></p>
+            <a href="login.php">ici</a> et vous aurez accès à la partie "concours" du site pour y poster vos oeuvres ! Mettez-y vos plus belles créations, et laissez le public voter pour vous !</h4></p>
     </section>
     <!--SERVICE SECTION END-->
 
