@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" class="no-js" >
   <head>
   <meta charset="utf-8" />
@@ -62,9 +62,7 @@
             </div>
         </div>
     </div>
-    <!--MENU SECTION END-->
-    <!--HOME SECTION START-->
-    <div id="home" >
+	<br><br><div id="home" >
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 ">
@@ -72,10 +70,8 @@
 
                         <div class="carousel-inner">
                             <div class="item active">
-                                <h2>Bienvenue sur la découverte des talents par BelleTable</h2><br><br><br><br><br><br>	
-                                <p><h4>BelleTable est une entreprise proposant de nombreux services pour la restauration et la cuisine,
-                                cette entreprise a aujourd'hui décidé de mettre un place ce module de jeunes talents afin
-                                de les aider à se faire découvrir et pour qu'ils puissent partager leur passion.</h4></p>
+                                <h2>Participez au concours dans la catégorie "photos" !</h2><br><br><br><br><br><br>	
+                                <p><h4>Vous pouvez ici publier vos plus belles photos et espérer remporter le concours, n'hésitez plus, foncez !</h4></p>
                             </div>
                         </div>
                     </div>
@@ -85,53 +81,28 @@
                 </div>
             </div>
 
-        </div>
-    <!--HOME SECTION END-->
-    <!--SERVICE SECTION START-->
-    <section id="services" >
-    <div class="container">
-        <div class="row text-center header">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-in" data-anim-type="fade-in-up">
-        <h3>Comment participer ?</h3><hr/>
-        <h2>Découverte des talents par BelleTable !</h2><br><br><br><br>
-            <p><h4>Que vous soyez passionnés de photos, de vidéos, ou encore de musiques, le programme de Belle Table proposant la découverte de jeunes talents est fait pour vous ! Pour y participer, rien de plus simple ! Vous n'aurez qu'à commencer par vous incrire sur le site
-            <a href="espaceclient.php">ici</a> et vous aurez accès à la partie "concours" du site pour y poster vos oeuvres ! Mettez-y vos plus belles créations, et laissez le public voter pour vous !</h4></p>
-    </section>
-    <!--SERVICE SECTION END-->
-
-    <footer id="footer" class="block block-bg-grey-dark" data-block-bg-img="img/bg_footer-map.png" data-stellar-background-ratio="0.4">
-        <div class="container">
-    <hr color="blue"> 
-          <div class="row" id="contact">
-    	  <HR align=center size=8 width="100%">
-            <div class="col-md-3">
-              <address>
-    		  <HR align=center size=8 width="100%">
-                  <strong>Belletable</strong>
-                  <br>
-                  <i class="fa fa-map-pin fa-fw text-primary"></i> 20 Rue de la gare - PARIS - 75100
-                  <br>
-                  <i class="fa fa-phone fa-fw text-primary"></i> 01 75 02 77 14
-                  <br>
-                  <i class="fa fa-envelope-o fa-fw text-primary"></i> contact@belletable.fr
-                  <br>
-                </address>
-            </div>
-          </div>
-          <div class="row subfooter">
-            <!--@todo: replace with company copyright details-->
-            <div class="col-md-7">
-              <p align="center">Copyright © T&A </p>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-
-
-    <!--CONTACT SECTION END-->
-
-    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
+        </div><br><br><br><br><br><br><br>
+	<div id="regFormContainer" class="container">
+	<div class="row text-center header">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-in" data-anim-type="fade-in-up">
+                    <form action="uploadImages.php" method="post" onsubmit="return validateUploadFile();" enctype="multipart/form-data" >
+                        <p><input type="hidden" name="MAX_FILE_SIZE" value="1000000" /></p>
+                        <div class="uploadFileprompt">
+                            <div class="span_left">Fichier à Upload - Max. 100kb</div><br>
+                            <center><div class="span_right"><input type="file" name="txtUploadFile[]"  /></div></center><br>
+                        </div>
+						<input type="submit" name="submit" value="Envoyer" />
+					</form>
+					</div>
+	</div> 
+	</div>
+	
+	
+	
+	
+	
+	</body>
+	    <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
     <!-- CORE JQUERY -->
     <script src="assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS -->
@@ -149,6 +120,3 @@
     <script src="assets/js/animations.min.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
-    </body>
-
-</html>
