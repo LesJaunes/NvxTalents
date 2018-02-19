@@ -50,7 +50,11 @@
                                       <li class="dropdown-header">Catégories</li>
                      <li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li>
                      <li><a href="musiques.php" tabindex="-1" class="menu-item">Musiques</a></li>
-                     <li><a href="photos.php" tabindex="-1" class="menu-item">Photos</a></li>
+                     <li><a href="displayimages.php" tabindex="-1" class="menu-item">Photos</a></li>
+					 <li class="dropdown-header">Catégories upload</li>
+					 <li><a href="videosupload.php" tabindex="-1" class="menu-item">Vidéos upload</a></li>
+                     <li><a href="musiquesupload.php" tabindex="-1" class="menu-item">Musiques upload</a></li>
+                     <li><a href="photosupload.php" tabindex="-1" class="menu-item">Photos upload</a></li>
                      <li class="dropdown-footer"></li></li>
                     </ul>
                         <li><a href="#accueil">Contact</a></li>
