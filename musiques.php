@@ -41,11 +41,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Belletable, nouveaux talents</a>
+                <a class="navbar-brand" href="index.php">Belletable, nouveaux talents</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="index.php">Accueil</a></li>
                     <li><a href="concours.php" class="dropdown-toggle" data-toggle="dropdown">Concours</a>
                     <ul class="dropdown-menu">
                                       <li class="dropdown-header">Catégories</li>
