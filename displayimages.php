@@ -60,7 +60,7 @@
                             {
                                 $pseudo = $_SESSION['user'];
                                 echo "<li><a href='#'>Bonjour ".$pseudo."</a></li>
-                                <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos créations</a>
+                                <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos création</a>
                                 <ul class='dropdown-menu'>
                                     <li class='dropdown-header'>Catégories upload</li>
                                     <li><a href='videosupload.php' tabindex='-1' class='menu-item'>Vidéos upload</a></li>
