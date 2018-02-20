@@ -106,7 +106,17 @@
     <!--SERVICE SECTION START-->
     <section id="services" >
     <div class="container">
-        <div class="container">		    
+        <div class="container">
+            <?php 
+                    include "connec.php";
+
+                    $requete = "SELECT `id_musique`, `auteur`, `titre`, `id_user`, `chemin` FROM `musiques`";
+            
+                    $reqCompte = $connect->prepare($requete);
+                    $reqCompte->execute();
+                    $resReqCompte = $reqCompte->fetchAll(PDO::FETCH_ASSOC);
+
+            ?>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<div class="services-wrapper">
 					<i class="ion-ios-musical-notes"></i>
