@@ -29,7 +29,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-      <!--<link rel="stylesheet" type="text/css" href="css/mplayer.css">-->
   </head>
   <body data-spy="scroll" data-target="#menu-section">
     <!--MENU SECTION START-->
@@ -49,7 +48,7 @@
                     <li><a href="concours.php" class="dropdown-toggle" data-toggle="dropdown">Concours</a>
                     <ul class="dropdown-menu">
                                       <li class="dropdown-header">Catégories</li>
-                     <li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li>
+                     <!-- En attente<li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li> en attendant de créer la page -->
                      <li><a href="musiques.php" tabindex="-1" class="menu-item">Musiques</a></li>
                      <li><a href="photos.php" tabindex="-1" class="menu-item">Photos</a></li>
                      <li class="dropdown-footer"></li></li>
@@ -59,15 +58,24 @@
                         <?php if(isset($_SESSION['user'])) // On vérifie que l'utilsateur est connecté
                             {
                                 $pseudo = $_SESSION['user'];
-                                echo "<li><a href='#'>Bonjour ".$pseudo."</a></li>";  // On affiche le pseudo de l'utilisateur                        
-                                echo "<li><a href='deco.php'>Deconnexion</a></li>"; // On affiche le bouton de deconnexion
+                                echo "<li><a href='#'>Bonjour ".$pseudo."</a></li>
+                                <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos créations</a>
+                                <ul class='dropdown-menu'>
+                                    <li class='dropdown-header'>Catégories upload</li>
+                                    <li><a href='videosupload.php' tabindex='-1' class='menu-item'>Vidéos upload</a></li>
+                                    <li><a href='musiquesupload.php' tabindex='-1' class='menu-item'>Musiques upload</a></li>
+                                    <li><a href='photosupload.php' tabindex='-1' class='menu-item'>Photos upload</a></li>
+                                <li class='dropdown-footer'></li></li>
+                                </ul></li>";
+                            
+                              echo "<li><a href='deco.php'>Deconnexion</a></li>"; // On affiche le bouton de deconnexion
                             }
-                            else // Si il n'est pas connecté on lui affiche "Inscription" et "Connexion"
+                            else // Si il n'est pas connecté on lui affiche 'Inscription' et 'Connexion'
                             {
                                echo "<li><a href='inscription.php'>Inscription</a></li>
                                 <li><a href='login.php'>Connexion</a></li>";
                             }
-                        ?>                    
+                        ?>               
                 </ul>
             </div>
         </div>
