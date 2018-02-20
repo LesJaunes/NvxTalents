@@ -30,6 +30,7 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <link rel="stylesheet" type="text/css" href="css/galerie.css">
   </head>
   <body data-spy="scroll" data-target="#menu-section">
     <!--MENU SECTION START-->
@@ -82,46 +83,61 @@
         </div>
     </div>
 	<section id="services" >
-<div class="container">
-<div class="row text-center header">
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-in" data-anim-type="fade-in-up">
-<h3>Vos oeuvres</h3>
-<hr />
-</div>
-</div>
-<div class="row animate-in" data-anim-type="fade-in-up">
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="container">
+        <div class="row text-center header">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-in" data-anim-type="fade-in-up">
+                <div class="gallery">
+                <?php
+                    $liste = array(); 
+                    $dir="images/";
+                  if ($dossier = opendir($dir)) 
+                  {  
+                      while (($item = readdir($dossier)) !== false) {  
+                          if ($item[0] == '.') { continue; }
+                          $explode = explode('.', $item);  
+                          if (!in_array(end($explode), array('jpg','jpeg','png','gif'))) { continue; }  
+                          $liste[] = $item;  
+                      }  
+                      closedir($dossier);  
+                      rsort($liste); 
 
-<?php   
-$table = '<table align="center" cellspacing="10" width="1080"><tr>'."\n";  
-$liste = array(); 
-$dir="images/";
-if ($dossier = opendir($dir)) {  
-    while (($item = readdir($dossier)) !== false) {  
-        if ($item[0] == '.') { continue; }  
-        if (!in_array(end(explode('.', $item)), array('jpg','jpeg','png','gif'))) { continue; }  
-        $liste[] = $item;  
-    }  
-    closedir($dossier);  
-    rsort($liste); 
+                      $nb_images_ligne = 500;
+                      $i=1;
 
-    $nb_images_ligne = 2;
-    $i=1;
+                      foreach ($liste as $val) 
+                      { 
 
-    foreach ($liste as $val) { 
+                          if($i%$nb_images_ligne != 0)
+                          {
+                              echo '<figure>
+                                            <img src="'.$dir.'/'.$val.'" alt="" class="img-responsive"/>
+                                            <figcaption>Daytona Beach <small>United States</small></figcaption>
+                                          </figure>'."\n";
 
-    if($i%$nb_images_ligne != 0)
-        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" class="img-responsive"/> </td>'."\n"; 
-        else
-        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" class="img-responsive"/> </td></tr><tr>'."\n";
-    $i++;
-    } 
-}  
-$table .= '</tr></table>';  
-echo $table;  
-?>
-</div>
-</div>
+                          }
+                      $i++;
+                      } 
+                  }
+                  ?>                  
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">
+          <symbol id="close" viewBox="0 0 18 18">
+            <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M9,0.493C4.302,0.493,0.493,4.302,0.493,9S4.302,17.507,9,17.507
+                    S17.507,13.698,17.507,9S13.698,0.493,9,0.493z M12.491,11.491c0.292,0.296,0.292,0.773,0,1.068c-0.293,0.295-0.767,0.295-1.059,0
+                    l-2.435-2.457L6.564,12.56c-0.292,0.295-0.766,0.295-1.058,0c-0.292-0.295-0.292-0.772,0-1.068L7.94,9.035L5.435,6.507
+                    c-0.292-0.295-0.292-0.773,0-1.068c0.293-0.295,0.766-0.295,1.059,0l2.504,2.528l2.505-2.528c0.292-0.295,0.767-0.295,1.059,0
+                    s0.292,0.773,0,1.068l-2.505,2.528L12.491,11.491z"/>
+          </symbol>
+        </svg>
+
+            </div>
+        </div>
+    <div class="row animate-in" data-anim-type="fade-in-up">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+
+        </div>
+    </div>
     <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME -->
     <!-- CORE JQUERY -->
     <script src="assets/js/jquery-1.11.1.js"></script>
@@ -140,6 +156,46 @@ echo $table;
     <script src="assets/js/animations.min.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+
+    <script>
+        popup = {
+      init: function(){
+        $('figure').click(function(){
+          popup.open($(this));
+        });
+        
+        $(document).on('click', '.popup img', function(){
+          return false;
+        }).on('click', '.popup', function(){
+          popup.close();
+        })
+      },
+      open: function($figure) {
+        $('.gallery').addClass('pop');
+        $popup = $('<div class="popup" />').appendTo($('body'));
+        $fig = $figure.clone().appendTo($('.popup'));
+        $bg = $('<div class="bg" />').appendTo($('.popup'));
+        $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+        $shadow = $('<div class="shadow" />').appendTo($fig);
+        src = $('img', $fig).attr('src');
+        $shadow.css({backgroundImage: 'url(' + src + ')'});
+        $bg.css({backgroundImage: 'url(' + src + ')'});
+        setTimeout(function(){
+          $('.popup').addClass('pop');
+        }, 10);
+      },
+      close: function(){
+        $('.gallery, .popup').removeClass('pop');
+        setTimeout(function(){
+          $('.popup').remove()
+        }, 100);
+      }
+    }
+
+    popup.init()
+
+    </script>
+
     </body>
 
 </html>

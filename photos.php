@@ -27,6 +27,10 @@
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/galerie.css">
   </head>
   <body data-spy="scroll" data-target="#menu-section">
     <!--MENU SECTION START-->
@@ -166,6 +170,45 @@
     <script src="assets/js/animations.min.js"></script>
     <!-- CUSTOM SCRIPTS -->
     <script src="assets/js/custom.js"></script>
+
+    <script>
+        popup = {
+      init: function(){
+        $('figure').click(function(){
+          popup.open($(this));
+        });
+        
+        $(document).on('click', '.popup img', function(){
+          return false;
+        }).on('click', '.popup', function(){
+          popup.close();
+        })
+      },
+      open: function($figure) {
+        $('.gallery').addClass('pop');
+        $popup = $('<div class="popup" />').appendTo($('body'));
+        $fig = $figure.clone().appendTo($('.popup'));
+        $bg = $('<div class="bg" />').appendTo($('.popup'));
+        $close = $('<div class="close"><svg><use xlink:href="#close"></use></svg></div>').appendTo($fig);
+        $shadow = $('<div class="shadow" />').appendTo($fig);
+        src = $('img', $fig).attr('src');
+        $shadow.css({backgroundImage: 'url(' + src + ')'});
+        $bg.css({backgroundImage: 'url(' + src + ')'});
+        setTimeout(function(){
+          $('.popup').addClass('pop');
+        }, 10);
+      },
+      close: function(){
+        $('.gallery, .popup').removeClass('pop');
+        setTimeout(function(){
+          $('.popup').remove()
+        }, 100);
+      }
+    }
+
+    popup.init()
+
+    </script>
     </body>
 
 </html>
