@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+    session_start();
+?>
+
 <html lang="fr" class="no-js" >
   <head>
   <meta charset="utf-8" />
@@ -49,15 +52,31 @@
                      <li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li>
                      <li><a href="musiques.php" tabindex="-1" class="menu-item">Musiques</a></li>
                      <li><a href="displayimages.php" tabindex="-1" class="menu-item">Photos</a></li>
-					 <li class="dropdown-header">Catégories upload</li>
-					 <li><a href="videosupload.php" tabindex="-1" class="menu-item">Vidéos upload</a></li>
-                     <li><a href="musiquesupload.php" tabindex="-1" class="menu-item">Musiques upload</a></li>
-                     <li><a href="photosupload.php" tabindex="-1" class="menu-item">Photos upload</a></li>
                      <li class="dropdown-footer"></li></li>
                     </ul>
-                    <li><a href="inscription.php">Inscription</a></li>
-                    <li><a href="login.php">Connexion</a></li>
                     <li><a href="contact.php">Contact</a></li>
+					<li><a href='#'></a></li>   
+					<?php if(isset($_SESSION['user'])) // On vérifie que l'utilsateur est connecté
+                            {
+                                $pseudo = $_SESSION['user'];
+                                echo "<li><a href='#'>Bonjour ".$pseudo."</a></li>
+                                <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos créations</a>
+                                <ul class='dropdown-menu'>
+                                    <li class='dropdown-header'>Catégories upload</li>
+                                    <li><a href='videosupload.php' tabindex='-1' class='menu-item'>Vidéos upload</a></li>
+                                    <li><a href='musiquesupload.php' tabindex='-1' class='menu-item'>Musiques upload</a></li>
+                                    <li><a href='photosupload.php' tabindex='-1' class='menu-item'>Photos upload</a></li>
+                                <li class='dropdown-footer'></li></li>
+                                </ul></li>";
+                            
+                              echo "<li><a href='deco.php'>Deconnexion</a></li>"; // On affiche le bouton de deconnexion
+                            }
+                            else // Si il n'est pas connecté on lui affiche 'Inscription' et 'Connexion'
+                            {
+                               echo "<li><a href='inscription.php'>Inscription</a></li>
+                                <li><a href='login.php'>Connexion</a></li>";
+                            }
+                        ?>
                 </ul>
             </div>
         </div>
@@ -92,9 +111,9 @@ if ($dossier = opendir($dir)) {
     foreach ($liste as $val) { 
 
     if($i%$nb_images_ligne != 0)
-        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" /> </td>'."\n"; 
+        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" class="img-responsive"/> </td>'."\n"; 
         else
-        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" /> </td></tr><tr>'."\n";
+        $table .= '<td><img src="'.$dir.'/'.$val.'" alt="" class="img-responsive"/> </td></tr><tr>'."\n";
     $i++;
     } 
 }  

@@ -50,7 +50,7 @@
                                       <li class="dropdown-header">Catégories</li>
                      <!-- En attente<li><a href="videos.php" tabindex="-1" class="menu-item">Vidéos</a></li> en attendant de créer la page -->
                      <li><a href="musiques.php" tabindex="-1" class="menu-item">Musiques</a></li>
-                     <li><a href="photos.php" tabindex="-1" class="menu-item">Photos</a></li>
+                     <li><a href="displayImages.php" tabindex="-1" class="menu-item">Photos</a></li>
                      <li class="dropdown-footer"></li></li>
                     </ul>
                         <li><a href="#accueil">Contact</a></li>
