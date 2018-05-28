@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     session_start();
 ?>
 <html lang='fr' class='no-js'>
@@ -31,6 +31,24 @@
       <![endif]-->
   </head>
   <body data-spy='scroll' data-target='#menu-section'>
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>This is a large modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!--MENU SECTION START-->
     <div class='navbar navbar-inverse navbar-fixed-top scroll-me' id='menu-section' >
         <div class='container'>
@@ -62,7 +80,6 @@
                                 <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos créations</a>
                                 <ul class='dropdown-menu'>
                                     <li class='dropdown-header'>Catégories upload</li>
-                                    <li><a href='videosupload.php' tabindex='-1' class='menu-item'>Vidéos upload</a></li>
                                     <li><a href='musiquesupload.php' tabindex='-1' class='menu-item'>Musiques upload</a></li>
                                     <li><a href='photosupload.php' tabindex='-1' class='menu-item'>Photos upload</a></li>
                                 <li class='dropdown-footer'></li></li>

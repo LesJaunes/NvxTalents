@@ -99,6 +99,8 @@
 	                                            </label>
 	                                        </div>
 	                                        <button type="submit" class="form-btn" id="valider" onsubmit="">Se connecter</button>
+
+	                                        <p>Note : Un compte a déjà été créer au préalable si vous souhaitez l'utiliser directement. User : test Mdp : test</p>
 	                                    </form>
 	                                </div>
 	                            </div>

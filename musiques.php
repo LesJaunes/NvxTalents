@@ -62,7 +62,6 @@
                                 <li><a href='#' class='dropdown-toggle' data-toggle='dropdown'>Envoyez vos créations</a>
                                 <ul class='dropdown-menu'>
                                     <li class='dropdown-header'>Catégories upload</li>
-                                    <li><a href='videosupload.php' tabindex='-1' class='menu-item'>Vidéos upload</a></li>
                                     <li><a href='musiquesupload.php' tabindex='-1' class='menu-item'>Musiques upload</a></li>
                                     <li><a href='photosupload.php' tabindex='-1' class='menu-item'>Photos upload</a></li>
                                 <li class='dropdown-footer'></li></li>
