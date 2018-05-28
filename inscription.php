@@ -18,13 +18,13 @@ if (isset($pseudo,$pass))
 
     if(isset($pseudo,$pass,$nom,$prenom,$mail)) 
     {
-    include "connec.php";
+        include "connec.php";
+            
+        $requete = "SELECT count(*) FROM membres WHERE pseudo='$pseudo'";    
         
-    $requete = "SELECT count(*) FROM membres WHERE pseudo='$pseudo'";    
-    
-    $req_prep = $connect->prepare($requete);
-    $req_prep->execute(array(0=>$pseudo));
-    $resultat = $req_prep->fetchColumn();
+        $req_prep = $connect->prepare($requete);
+        $req_prep->execute(array(0=>$pseudo));
+        $resultat = $req_prep->fetchColumn();
   
         if ($resultat == 0) 
         {

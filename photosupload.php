@@ -108,7 +108,7 @@
 	<div id="regFormContainer" class="container">
 	<div class="row text-center header">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 animate-in" data-anim-type="fade-in-up">
-                    <form action="uploadImages.php" method="post" onsubmit="return validateUploadFile();" enctype="multipart/form-data" >
+                    <form action="uploadimages.php" method="post" onsubmit="return validateUploadFile();" enctype="multipart/form-data" >
                         <p><input type="hidden" name="MAX_FILE_SIZE" value="1000000000000" /></p>
                         <div class="uploadFileprompt">
                             <div class="span_left">Fichier à Upload - Max. 100kb</div><br>
